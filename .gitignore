@@ -66,3 +66,7 @@ lib
 node_modules/
 .vscode
 .idea/
+npm-debug.log*
+node_modules/
+dist/bundle.js
+package-lock.json

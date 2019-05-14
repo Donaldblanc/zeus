@@ -1,0 +1,45 @@
+{
+  "name": "zeus",
+  "version": "1.0.0",
+  "description": "Beautician booking application",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "dev": "webpack-dev-server --mode development --open",
+    "build" : "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Donaldblanc/zeus.git"
+  },
+  "keywords": [
+    "solo",
+    "project",
+    "zeus"
+  ],
+  "author": "Donald Blanc",
+  "license": "MIT ",
+  "bugs": {
+    "url": "https://github.com/Donaldblanc/zeus/issues"
+  },
+  "homepage": "https://github.com/Donaldblanc/zeus#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.3.1",
+    "@babel/plugin-transform-runtime": "^7.4.4"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.8.4"
+  }
+}
