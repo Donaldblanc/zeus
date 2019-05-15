@@ -18,22 +18,23 @@ module.exports = {
         test: /\.css$/,
         loaders: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=20000000'
+      },
     ],
   },
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/client/public',
     filename: 'bundle.js',
   },
   devServer: {
     contentBase: path.join(__dirname, '/client/public'),
-   // port: 3000,
     publicPath: '/dist/',
-   // index: 'index.html',
-   // hotOnly: true,
   },
- // plugins: [new webpack.HotModuleReplacementPlugin()],
+// plugins: [new webpack.HotModuleReplacementPlugin()],
 };
 
 
