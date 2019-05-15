@@ -4,32 +4,47 @@ const express = require('express');
 const app = express();
 const fs = require('fs'); 
 const path = require('path');
-const bodyParser = require ('body-parser');
+// const bodyParser = require ('body-parser');
+const schema  = require( './data/schema');
 
-const PORT = process.env.PORT || 3000;
+//import { schema } from './data/schema';
 
-const shopController = require('./controllers/shopController')
-
-app.use(express.static(path.join(__dirname, '../client/public')));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+const PORT = process.env.PORT || 8090;
+const shopController = require('./controllers/shopController');
 
 
+//import graphqlHTTP from 'express-graphql';
+const graphqlHTTP  = require('express-graphql');
 
-app.get('/barbers', shopController.index, (req, res)=>{
-  console.log("getting Barbers");
-});
 
-app.post('/addBarber',shopController.insert, (req, res) =>{
-  console.log("My Posts is good")
-});
+ app.use(express.static(path.join(__dirname, '../client/public')));
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+
+
+
+// app.get('/barbers', shopController.index, (req, res)=>{
+//   console.log("getting Barbers");
+// });
+
+// app.post('/addBarber',shopController.insert, (req, res) =>{
+//   console.log("My Posts is good")
+// });
+
+
+app.get('/', (req, res) => {
+  res.send('GraohQL is running')
+})
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema.schema,
+  graphiql: true,
+}))
 
 
 app.get('/test', (req, res) => {
   console.log('hitting this route');
-  
   console.log(__dirname, '/ route is the dirname');
-
   res.setHeader('Content-Type', 'text/html');
   res.status(200).end('<h1>THIS IS MY TEST ROUTE</h1>');
   //res.end(body);
@@ -44,7 +59,7 @@ app.use( (req, res, next) => {
 
 app.listen(PORT, (err)=>{
   if (err) console.log(err);
-  console.log(`App listening on: http://localhost:${PORT}`);
+  console.log(`App listening on: http://localhost:${PORT}/graphql`);
 });
 
 
