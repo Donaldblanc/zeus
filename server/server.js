@@ -8,12 +8,21 @@ const bodyParser = require ('body-parser');
 
 const PORT = process.env.PORT || 3000;
 
+const shopController = require('./controllers/shopController')
+
 app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
 
+app.get('/barbers', shopController.index, (req, res)=>{
+  console.log("getting Barbers");
+});
+
+app.post('/addBarber',shopController.insert, (req, res) =>{
+  console.log("My Posts is good")
+});
 
 
 app.get('/test', (req, res) => {
@@ -31,7 +40,6 @@ app.use( (req, res, next) => {
   console.log(`${req.method} request for '${req.url}' <----> PostData : ${JSON.stringify(req.body)}`);
 
 });
-
 
 
 app.listen(PORT, (err)=>{

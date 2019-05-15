@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: './client/src/index.js',
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -33,6 +33,9 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, '/client/public'),
     publicPath: '/dist/',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 // plugins: [new webpack.HotModuleReplacementPlugin()],
 };
