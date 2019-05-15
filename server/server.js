@@ -64,3 +64,15 @@ app.listen(PORT, (err)=>{
 
 
 // Graph QL Piece SERVER.
+
+/*
+
+to manually create users :  run in graphiQL
+mutation {
+   createContact(input: {firstName: "Donald", lastName: "Blanc", email: "testingGraph@zues.com", company: "CEO of ZUES"}) {
+    id
+    firstName
+  }
+}
+
+*/
