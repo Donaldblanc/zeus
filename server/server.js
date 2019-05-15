@@ -75,4 +75,21 @@ mutation {
   }
 }
 
+query{
+  getContacts {
+    firstName
+    lastName
+    company
+  }
+}
+
+query{
+  getOneContact(id:"5cdc9674496cc38673382070"){
+    firstName
+    lastName
+    company
+    email
+  }
+}
+
 */
