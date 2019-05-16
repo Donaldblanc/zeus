@@ -1,16 +1,16 @@
-const { Client } = require('pg')
+const { Pool } = require('pg')
 //postgresql://[user[:password]@][netloc][:port][/dbname][?param1=value1&...]
 const db = {};
 const uri = 'postgres://barberadmin:test@localhost/zues';
 
-const client = new Client({
+const pool = new Pool({
   host: 'localhost',
   database: 'zues',
   user: 'barberadmin',
   password: 'test',
 })
 
-client.connect((err) => {
+pool.connect((err) => {
   if (err) {
     console.error('connection error', err.stack)
   } else {
@@ -26,4 +26,4 @@ client.connect((err) => {
   }
 })
 
-module.exports = client;
+module.exports = pool;
