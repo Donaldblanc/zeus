@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 // const bodyParser = require ('body-parser');
 const schema  = require( './data/schema');
-
+const cors = require('cors');
 //import { schema } from './data/schema';
 
 const PORT = process.env.PORT || 8090;
@@ -16,7 +16,7 @@ const shopController = require('./controllers/shopController');
 //import graphqlHTTP from 'express-graphql';
 const graphqlHTTP  = require('express-graphql');
 
-
+  app.use(cors());
  app.use(express.static(path.join(__dirname, '../client/public')));
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
@@ -31,6 +31,11 @@ const graphqlHTTP  = require('express-graphql');
 //   console.log("My Posts is good")
 // });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.get('/', (req, res) => {
   res.send('GraohQL is running')

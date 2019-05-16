@@ -1,4 +1,5 @@
 const db = require('./dbconnectors');
+const client = require('../model/dbconnection');
 
 const resolvers = {
   Query: {
