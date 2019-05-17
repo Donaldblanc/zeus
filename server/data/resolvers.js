@@ -13,7 +13,12 @@ const resolvers = {
           else resolve(Contact)
         })
       })
-    }
+    },
+    getAllBarbers: async ()=>{
+      const results = await client.query('SELECT * FROM barbers');
+      //console.log(results);
+      return results.rows
+    },
 
   },
   Mutation: {
@@ -49,7 +54,8 @@ const resolvers = {
           else resolve('Successfully deleted contact!')
         })
       })
-    }
+    },
+    
 
   }
 }

@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs'); 
 const path = require('path');
-// const bodyParser = require ('body-parser');
+const bodyParser = require ('body-parser');
 const schema  = require( './data/schema');
 const cors = require('cors');
 //import { schema } from './data/schema';
@@ -18,18 +18,19 @@ const graphqlHTTP  = require('express-graphql');
 
   app.use(cors());
  app.use(express.static(path.join(__dirname, '../client/public')));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 
-// app.get('/barbers', shopController.index, (req, res)=>{
-//   console.log("getting Barbers");
-// });
+app.get('/barbers', shopController.index, (req, res)=>{
+  console.log("getting Barbers");
+});
 
-// app.post('/addBarber',shopController.insert, (req, res) =>{
-//   console.log("My Posts is good")
-// });
+app.post('/addBarber',shopController.insert, (req, res) =>{
+  console.log("My Posts is good")
+});
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -58,7 +59,6 @@ app.get('/test', (req, res) => {
 
 app.use( (req, res, next) => {
   console.log(`${req.method} request for '${req.url}' <----> PostData : ${JSON.stringify(req.body)}`);
-
 });
 
 

@@ -13,10 +13,19 @@ const typeDefs = `
         email: String
         company: String
     }
+    type Barber {
+      id :  Int, 
+      firstname :String,
+      lastname :String,
+      jobrole: String,
+      rating: Int,
+      email :String,
+    }
 
     type Query {
         getContacts: [Contact]
         getOneContact(id: ID!): Contact
+        getAllBarbers: [Barber]
     }
 
     input ContactInput {
